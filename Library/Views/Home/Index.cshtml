@@ -1,75 +1,90 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
-
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+﻿<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/knockout-3.4.2.js"></script>
-<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
 <script>
     $(document).ready(function () {
-        $('#datatable').dataTable();
+        $('#table_id').DataTable();
     })
 </script>
 
-<table id="datatable"> 
-    <caption>Перечень продуктов</caption>
-    <tr>
-        <th>№ п/п</th>
-        <th>Наименование товара</th>
-        <th>Ед. изм.</th>
-        <th>Количество</th>
-        <th>Цена за ед. изм., руб.</th>
-        <th>Стоимость, руб.</th>
-    </tr>
-    <tr>
-        <td>1.</td>
-        <td>Томаты свежие</td>
-        <td>кг</td>
-        <td>15,20</td>
-        <td>69,00</td>
-        <td>1048,80</td>
-    </tr>
-    <tr>
-        <td>2.</td>
-        <td>Огурцы свежие</td>
-        <td>кг</td>
-        <td>2,50</td>
-        <td>48,00</td>
-        <td>120,00</td>
-    </tr>
-    <tr>
-        <td colspan="5" style="text-align:right">ИТОГО:</td>
-        <td>1168,80</td>
-    </tr>
+<h2>Your seat reservations</h2>
+
+<table id="table_id">
+    <thead>
+        <tr>
+            <th>Passenger name</th>
+            <th>Meal</th>
+            <th>Surcharge</th>
+            <th></th>
+        </tr>
+    </thead>
+    <!-- Todo: Generate table body -->
+    <tbody data-bind="foreach: seats">
+        <tr>
+            <td><input data-bind="value: name" /></td>
+            <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
+            <td data-bind="text: formattedPrice"></td>
+            <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+        </tr>
+    </tbody>
+    <h3 data-bind="visible: totalSurcharge() > 0">
+        Total surcharge: $<span data-bind="text: totalSurcharge()"></span>
+    </h3>
+    <button data-bind="click: addSeat, , enable: seats().length < 5">Reserve another seat</button>
 </table>
+
+<h2>Your seat reservations (<span data-bind="text: seats().length"></span>)</h2>
+
+
+
+ <script>
+    // Class to represent a row in the seat reservations grid
+    function SeatReservation(name, initialMeal) {
+        var self = this;
+        self.name = name;
+        self.meal = ko.observable(initialMeal);
+
+        self.formattedPrice = ko.computed(function () {
+            var price = self.meal().price;
+            return price ? "$" + price.toFixed(2) : "None";
+        });
+    }
+
+    // Overall viewmodel for this screen, along with initial state
+    function ReservationsViewModel() {
+        var self = this;
+
+        // Non-editable catalog data - would come from the server
+        self.availableMeals = [
+            { mealName: "Standard (sandwich)", price: 0 },
+            { mealName: "Premium (lobster)", price: 34.95 },
+            { mealName: "Ultimate (whole zebra)", price: 290 }
+        ];
+
+        // Editable data
+        self.seats = ko.observableArray([
+            new SeatReservation("Steve", self.availableMeals[0]),
+            new SeatReservation("Bert", self.availableMeals[1])
+        ]);
+
+        self.addSeat = function () {
+            self.seats.push(new SeatReservation("", self.availableMeals[0]));
+        }
+
+        self.removeSeat = function (seat) { self.seats.remove(seat) }
+
+        self.totalSurcharge = ko.computed(function () {
+            var total = 0;
+            for (var i = 0; i < self.seats().length; i++)
+                total += self.seats()[i].meal().price;
+            return total;
+        });
+    }
+
+    ko.applyBindings(new ReservationsViewModel());
+</script>
+
 
