@@ -12,9 +12,8 @@
             <th></th>
             <th></th>
         </tr>
-        <tr data-bind="visible: isEditBook">
-            <td><input type="text" data-bind="value: name" /></td>
-            @* <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>*@
+        <tr data-bind="visible: isEditBook">       
+            <td><input type="text" data-bind="value: newBook.name" /></td>
             <td>
                 <div class="input-group date" id="datetimepicker">
                     <input type="text" class="form-control" />
@@ -23,10 +22,10 @@
                     </span>
                 </div>
             </td>
-            <td><input type="text" data-bind="value: autor" /></td>
-            <td><input type="text" data-bind="value: rate" /></td>
-            <td><input type="text" data-bind="value: pages" /></td>
-            <td><input type="text" data-bind="value: autorAtrr" /></td>
+            <td><input type="text" data-bind="value: newBook.autor" /></td>
+            <td><input type="text" data-bind="value: newBook.rate" /></td>
+            <td><input type="text" data-bind="value: newBook.pages" /></td>
+            <td><input type="text" data-bind="value: newBook.autorAtrr" /></td>
             <td></td>
             <td></td>
         </tr>
@@ -50,3 +49,4 @@
     </h3>
     <button data-bind="click: addSeat, , enable: seats().length < 5">Reserve another seat</button>
 </table>
+

@@ -129,7 +129,15 @@ function InitBooksData() {
     var self = this;
     
     self.books = ko.observableArray(allBooks);
-    self.isEditBook = ko.observable(false);
+    self.isEditBook = ko.observable(true);
+    self.shouldShowMessage = ko.observable()
+    self.newBook = ko.observable();
+    self.newBook({
+        autor: '',
+        rate: '',
+        pages: '',
+        autorAtrr: ''
+    });
         
     self.seats = ko.observableArray([
         //new SeatReservation("Steve", self.availableMeals[0]),
@@ -142,6 +150,11 @@ function InitBooksData() {
   
     self.removeBook = function () {
         self.books.remove(this)
+    }
+
+    self.editBook = function () {
+        console.log('brtsa');
+        self.isEditBook(true)
     }
 
     self.totalSurcharge = ko.computed(function () {
