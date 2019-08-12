@@ -1,4 +1,4 @@
-﻿var books = [
+﻿var allBooks = [
     {
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date(2011, 0, 1).toLocaleDateString(),
@@ -117,9 +117,7 @@
 // Class to represent a row in the seat reservations grid
 function SeatReservation(name, initialMeal) {
     var self = this;
-    self.name = name;
-    self.meal = ko.observable(initialMeal);
-
+    
     self.formattedPrice = ko.computed(function () {
         var price = self.meal().price;
         return price ? "$" + price.toFixed(2) : "None";
@@ -127,15 +125,12 @@ function SeatReservation(name, initialMeal) {
 }
 
 
-
-// Overall viewmodel for this screen, along with initial state
 function InitBooksData() {
     var self = this;
-
-    // Non-editable catalog data - would come from the server
-    self.books = ko.observableArray(books);
-
-    // Editable data
+    
+    self.books = ko.observableArray(allBooks);
+    self.isEditBook = ko.observable(false);
+        
     self.seats = ko.observableArray([
         //new SeatReservation("Steve", self.availableMeals[0]),
         //new SeatReservation("Bert", self.availableMeals[1])
@@ -144,14 +139,9 @@ function InitBooksData() {
     self.addSeat = function () {
         //self.seats.push(new SeatReservation("", self.availableMeals[0]));
     }
-    self.empArray = ko.observableArray(['Scott', 'James', 'Jordan', 'Lee',
-        'RoseMary', 'Kathie']);
-
+  
     self.removeBook = function () {
         self.books.remove(this)
-        console.log(self.empArray())
-        self.empArray.remove('James')
-        console.log(self.empArray())
     }
 
     self.totalSurcharge = ko.computed(function () {
@@ -163,4 +153,3 @@ function InitBooksData() {
 }
 
 ko.applyBindings(new InitBooksData());
-

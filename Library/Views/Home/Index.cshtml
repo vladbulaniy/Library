@@ -12,12 +12,31 @@
             <th></th>
             <th></th>
         </tr>
-    </thead>    
+        <tr data-bind="visible: isEditBook">
+            <td><input type="text" data-bind="value: name" /></td>
+            @* <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>*@
+            <td>
+                <div class="input-group date" id="datetimepicker">
+                    <input type="text" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </td>
+            <td><input type="text" data-bind="value: autor" /></td>
+            <td><input type="text" data-bind="value: rate" /></td>
+            <td><input type="text" data-bind="value: pages" /></td>
+            <td><input type="text" data-bind="value: autorAtrr" /></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </thead>
     <tbody data-bind="foreach: books">
+
         <tr>
             <td data-bind="text: name"></td>
-           @* <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>*@
-            <td data-bind="text: date"></td>            
+            <td data-bind="text: date"></td>
             <td><a href="#" data-bind="click: $root.removeSeat, text: autor"></a></td>
             <td data-bind="text: rate"></td>
             <td data-bind="text: pages"></td>
@@ -31,6 +50,3 @@
     </h3>
     <button data-bind="click: addSeat, , enable: seats().length < 5">Reserve another seat</button>
 </table>
-
-
-
