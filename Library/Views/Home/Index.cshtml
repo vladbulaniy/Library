@@ -44,9 +44,5 @@
             <td><a href="#" data-bind="click: $root.removeBook">Remove</a></td>
         </tr>
     </tbody>
-    <h3 data-bind="visible: totalSurcharge() > 0">
-        Total surcharge: $<span data-bind="text: totalSurcharge()"></span>
-    </h3>
-    <button data-bind="click: addSeat, , enable: seats().length < 5">Reserve another seat</button>
 </table>
 
