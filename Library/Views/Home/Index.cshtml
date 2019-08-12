@@ -1,21 +1,29 @@
-﻿<h2>Your seat reservations</h2>
+﻿<h2>Library</h2>
 
 <table id="table_id">
     <thead>
         <tr>
-            <th>Passenger name</th>
-            <th>Meal</th>
-            <th>Surcharge</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Autor</th>
+            <th>Rate</th>
+            <th>Pages</th>
+            <th>Autor Atrr</th>
+            <th></th>
             <th></th>
         </tr>
-    </thead>
-    <!-- Todo: Generate table body -->
-    <tbody data-bind="foreach: seats">
+    </thead>    
+    <tbody data-bind="foreach: books">
         <tr>
-            <td><input data-bind="value: name" /></td>
-            <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
-            <td data-bind="text: formattedPrice"></td>
-            <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+            <td data-bind="text: name"></td>
+           @* <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>*@
+            <td data-bind="text: date"></td>            
+            <td><a href="#" data-bind="click: $root.removeSeat, text: autor"></a></td>
+            <td data-bind="text: rate"></td>
+            <td data-bind="text: pages"></td>
+            <td data-bind="text: autorAtrr"></td>
+            <td><a href="#" data-bind="click: $root.editBook">Edit</a></td>
+            <td><a href="#" data-bind="click: $root.removeBook">Remove</a></td>
         </tr>
     </tbody>
     <h3 data-bind="visible: totalSurcharge() > 0">
@@ -24,6 +32,5 @@
     <button data-bind="click: addSeat, , enable: seats().length < 5">Reserve another seat</button>
 </table>
 
-<h2>Your seat reservations (<span data-bind="text: seats().length"></span>)</h2>
 
 
