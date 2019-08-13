@@ -118,7 +118,8 @@ function InitBooksData() {
     var self = this;
     
     self.books = ko.observableArray(allBooks);
-    self.isEditBook = ko.observable(true);
+
+    self.isEditBook = ko.observable(false);
     self.shouldShowMessage = ko.observable()
     self.newBook = ko.observable();
     self.newBook({
@@ -132,8 +133,11 @@ function InitBooksData() {
         self.books.push();
     }
   
-    self.removeBook = function () {
-        self.books.remove(this)
+    self.removeBook = function (book) {
+      
+        self.books.remove(book)
+        self.books(self.books);
+        // self.books.removeAll()
     }
 
     self.editBook = function () {
