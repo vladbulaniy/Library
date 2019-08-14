@@ -1,4 +1,4 @@
-﻿<h2>Library</h2>
+﻿@*<h2>Library</h2>
 
 <table id="table_id">
     <thead>
@@ -12,7 +12,7 @@
             <th></th>
             <th></th>
         </tr>
-        <tr data-bind="visible: isEditBook">       
+        <tr data-bind="visible: isEditBook">
             <td><input type="text" data-bind="value: newBook.name" /></td>
             <td>
                 <div class="input-group date" id="datetimepicker">
@@ -31,7 +31,7 @@
         </tr>
 
     </thead>
-    <tbody data-bind="foreach: books">
+    <tbody data-bind="foreach:  {data: books, includeDestroyed: true  }">
 
         <tr>
             <td data-bind="text: name"></td>
@@ -44,5 +44,55 @@
             <td><a href="#" data-bind="click: $root.removeBook">Remove</a></td>
         </tr>
     </tbody>
-</table>
+</table>*@
 
+
+
+
+
+
+
+<h2>House Components</h2>
+
+<div id='roomsList'>
+    <table class='roomsEditor'>
+        <tr>
+            <th>Room Name</th>
+            <th>Furnitures</th>
+        </tr>
+        <tbody data-bind="foreach: rooms">
+            <tr class="well">
+                <td valign="top">
+                    <input type="text" data-bind='value: name' />
+                    <div>
+                        <button class="btn btn-danger" data-bind='click: $root.rooms.removeRoom'>Remove Room</button>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tbody data-bind="foreach: furnitures">
+                            <tr>
+                                <td>
+                                    <input type="text" data-bind='value: name' />
+                                </td>
+                                <td>
+                                    <input type="text" data-bind='value: size' />
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" data-bind='click: $parent.removeFurniture'>Delete Furniture</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-success" data-bind='click: addFurniture'>Add Furniture</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>
+    <button class="btn btn-success" data-bind='click: $root.rooms.addRoom'>Add Room</button>
+    <button data-bind='click: save, enable: rooms().length > 0'>Save to JSON</button>
+</p>
+<textarea data-bind='value: lastSavedJson' rows='5' cols='60' disabled='disabled'></textarea>
