@@ -1,21 +1,24 @@
-﻿/*
+﻿
 var allBooks = [
-    {id: 0,
-        name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
-        date: new Date(2011, 0, 1).toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
-        rate: 5,
-        pages: 150,
-        autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
+    {"id": 0,
+        "name": "Jenseits von Gut und Böse: prelude to a philosophy of the future",
+        "date": new Date(2011, 0, 1).toLocaleDateString(),
+        "autor": "Friedrich Nietzsche",
+        "rate": 5,
+        "pages": 150,
+        "autorAtrr": "Friedrich Wilhelm Nietzsche (1844-1900)"
     }, {
-        id: 1,
-        name: "Heidi ",
-        date: new Date('October 05, 1815').toLocaleDateString(),
-        autor: "Johanna Spyri",
-        rate: 2,
-        pages: 789,
-        autorAtrr: "Around 1875"
-    }, {
+        "id": 1,
+        "name": "Heidi ",
+        "date": new Date('October 05, 1815').toLocaleDateString(),
+        "autor": "Johanna Spyri",
+        "rate": 2,
+        "pages": 789,
+        "autorAtrr": "Around 1875"
+    }]
+
+
+    /*, {
         id: 2,
         name: "Meus Artigos",
         date: new Date('March 17, 1874').toLocaleDateString(),
@@ -129,16 +132,44 @@ var allBooks = [
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
     }
 ];
+*/
 
-function InitBooksData() {
+var Book = function (book) {
+    var self = this;
+    self.name = ko.observable(book.name); 
+    self.date = ko.observable(book.date); 
+    self.autor = ko.observable(book.autor); 
+    self.rate = ko.observable(book.rate); 
+    self.pages = ko.observable(book.pages); 
+    self.autorAtrr = ko.observable(book.autorAtrr); 
+};
+
+
+function InitBooksData(allBooks) {
     var self = this;
     
     self.books = ko.observableArray([]);
-    self.books(allBooks);
+    //self.books(allBooks);
+    if (typeof allBooks !== 'undefined') {
+        $.each(allBooks, function (i, el) {
+            //self.books.push(new Book(el));
+            self.books.push(new Book({
+                id: el.id,
+                name: el.name,
+                date: el.date,
+                autor: el.autor,
+                rate: el.rate,
+                pages: el.pages,
+                autorAtrr: el.pages
+            }));
+        });
+    }
+
     self.isEditBook = ko.observable(false);
-    self.shouldShowMessage = ko.observable()
     self.newBook = ko.observable();
     self.newBook({
+        name: '',
+        date: new Date('December 17, 1905').toLocaleDateString(),
         autor: '',
         rate: '',
         pages: '',
@@ -146,24 +177,28 @@ function InitBooksData() {
     });        
 
     self.addBook = function () {
-        self.books.push();
+        self.books.push({
+            name: 'name',
+            date: new Date('December 17, 1905').toLocaleDateString(),
+            autor: 'autor',
+            rate: '6',
+            pages: '7645',
+            autorAtrr: 'some attributes'
+        });
     }
-  
-    this.removeBook = function (book) {
-        return self.books.remove(book)
-        //self.books.valueHasMutated();
-        // self.books.removeAll()
+
+    self.removeBook = function () {
+        return self.books.remove(this)
     }
 
     self.editBook = function () {
-        console.log('brtsa');
         self.isEditBook(true)
     }
 }
 
-ko.applyBindings(new InitBooksData());
-*/
+ko.applyBindings(new InitBooksData(allBooks));
 
+/*
 var initialData = [{
     "name": "Living Room",
     "furnitures": [{
@@ -233,3 +268,4 @@ var HouseModel = function (rooms) {
 };
 
 ko.applyBindings(new HouseModel(initialData));
+*/

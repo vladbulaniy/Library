@@ -1,5 +1,5 @@
-﻿@*<h2>Library</h2>
-
+﻿<h2>Library</h2>
+<button data-bind="click: addBook">Add book</button>
 <table id="table_id">
     <thead>
         <tr>
@@ -31,8 +31,7 @@
         </tr>
 
     </thead>
-    <tbody data-bind="foreach:  {data: books, includeDestroyed: true  }">
-
+    <tbody data-bind="foreach:  books">
         <tr>
             <td data-bind="text: name"></td>
             <td data-bind="text: date"></td>
@@ -41,10 +40,10 @@
             <td data-bind="text: pages"></td>
             <td data-bind="text: autorAtrr"></td>
             <td><a href="#" data-bind="click: $root.editBook">Edit</a></td>
-            <td><a href="#" data-bind="click: $root.removeBook">Remove</a></td>
+            <td><a href="#" data-bind="click: $parent.removeBook">Remove</a></td>
         </tr>
     </tbody>
-</table>*@
+</table>
 
 
 
@@ -52,7 +51,7 @@
 
 
 
-<h2>House Components</h2>
+@*<h2>House Components</h2>
 
 <div id='roomsList'>
     <table class='roomsEditor'>
@@ -95,4 +94,4 @@
     <button class="btn btn-success" data-bind='click: $root.rooms.addRoom'>Add Room</button>
     <button data-bind='click: save, enable: rooms().length > 0'>Save to JSON</button>
 </p>
-<textarea data-bind='value: lastSavedJson' rows='5' cols='60' disabled='disabled'></textarea>
+<textarea data-bind='value: lastSavedJson' rows='5' cols='60' disabled='disabled'></textarea>*@
