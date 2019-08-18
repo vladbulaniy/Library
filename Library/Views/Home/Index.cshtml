@@ -1,6 +1,6 @@
 ﻿<h2>Library</h2>
-
-<table id="table_id">
+<button class="btn btn-primary" data-bind="click: $root.addBook">Add</button>
+<table id="table_id1">
     <thead>
         <tr>
             <th>Name</th>
@@ -13,7 +13,7 @@
             <th></th>
         </tr>
         <tr data-bind="visible: isEditBook">
-            <td><input type="text" data-bind="value: editableBook.name" /></td>
+            <td><input type="text" data-bind="value: editableBook.name" />
             <td>
                 <div class="input-group date" id="datetimepicker">
                     <input type="text" class="form-control" />
@@ -27,13 +27,14 @@
             <td><input type="text" data-bind="value: editableBook.pages" /></td>
             <td><input type="text" data-bind="value: editableBook.autorAtrr" /></td>
             <td>
-                <button class="btn btn-success" data-bind="click: $root.updateBook">Save</button>
+                <button class="btn btn-success" data-bind="click: $root.updateBook, visible: !isAddingBook">Save</button>
+                <button class="btn btn-success" data-bind="click: $root.addNewBook, visible: isAddingBook">Save</button>
             </td>
             <td></td>
         </tr>
 
     </thead>
-    <tbody data-bind="foreach:  {data: books, includeDestroyed: true  }">
+    <tbody data-bind="foreach: books">
 
         <tr>
             <td>

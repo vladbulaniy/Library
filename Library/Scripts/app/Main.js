@@ -1,6 +1,7 @@
 ﻿
 var allBooks = [
-    {id: 0,
+    {
+        id: 0,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date(2011, 0, 1).toLocaleDateString(),
         autor: "Friedrich Nietzsche",
@@ -130,42 +131,84 @@ var allBooks = [
     }
 ];
 
-function InitBooksData() {
+var Book = function (book) {
     var self = this;
-    
+    self.name = ko.observable(book.name);
+    self.date = ko.observable(book.date);
+    self.autor = ko.observable(book.autor);
+    self.rate = ko.observable(book.rate);
+    self.pages = ko.observable(book.pages);
+    self.autorAtrr = ko.observable(book.autorAtrr);
+};
+
+
+function InitBooksData(allBooks) {
+    var self = this;
+
     self.books = ko.observableArray([]);
-    self.books(allBooks);
+    // self.books(allBooks);
     self.isEditBook = ko.observable(false);
+    self.isAddingBook = ko.observable(false);
     self.shouldShowMessage = ko.observable();
-    self.editableBook = {
-        name: ko.observable('')
-    };
-         
+    self.editableBook = ko.observable('');
+    self.editableBook = {};
+
+    if (typeof allBooks !== 'undefined') {
+        $.each(allBooks, function (i, el) {
+            //self.books.push(new Book(el));
+            self.books.push(new Book({
+                id: el.id,
+                name: el.name,
+                date: el.date,
+                autor: el.autor,
+                rate: el.rate,
+                pages: el.pages,
+                autorAtrr: el.pages
+            }));
+        });
+    }
+
 
     self.addBook = function () {
-        self.books.push();
+        //self.books.push();
+        self.isEditBook(true);
+        self.isAddingBook(true);
     }
-  
+
+    self.addNewBook = function () {
+        self.editableBook.date = '17.04.2019'
+        self.books.push(new Book({
+            name: self.editableBook.name,
+            date: self.editableBook.date,
+            autor: self.editableBook.autor,
+            rate: self.editableBook.rate,
+            pages: self.editableBook.pages,
+            autorAtrr: self.editableBook.pages
+        }));
+        console.log(self.books());
+        self.isAddingBook(false);
+    }
+
     this.removeBook = function (book) {
         self.books.remove(book);
     }
-    var tempBook;
+
     self.editBook = function (book) {
-        tempBook = book;
         console.log(book)
-      //  self.editableBook(book);
-        self.editableBook.name(book.name)
-        self.isEditBook(true)
+        self.editableBook = ko.mapping.fromJS(book);
+        self.editableBook.name(book.name());
+        console.log(self.editableBook.name());
+        self.isEditBook(true);
     }
 
     self.updateBook = function (book) {
         console.log('book = ', self.editableBook.name())
-        tempBook.name = self.editableBook.name();
-        console.log(self.books());
+        tempBook.name(self.editableBook.name());
+        self.isEditBook(false);
     }
 }
 
-ko.applyBindings(new InitBooksData());
+ko.applyBindings(new InitBooksData(allBooks));
 
 
 

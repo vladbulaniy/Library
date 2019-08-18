@@ -170,6 +170,7 @@
     <Content Include="Scripts\global\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\global\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\global\knockout-3.4.2.js" />
+    <Content Include="Scripts\global\knockout.mapping-latest.js" />
     <Content Include="Scripts\global\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

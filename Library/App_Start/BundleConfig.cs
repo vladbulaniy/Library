@@ -20,7 +20,8 @@ namespace Library
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/global/bootstrap.js"));
+                      "~/Scripts/global/bootstrap.js",
+                      "~/Scripts/global/knockout.mapping-latest.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
