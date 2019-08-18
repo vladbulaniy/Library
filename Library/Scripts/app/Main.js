@@ -1,4 +1,4 @@
-﻿/*
+﻿
 var allBooks = [
     {id: 0,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
@@ -136,34 +136,43 @@ function InitBooksData() {
     self.books = ko.observableArray([]);
     self.books(allBooks);
     self.isEditBook = ko.observable(false);
-    self.shouldShowMessage = ko.observable()
-    self.newBook = ko.observable();
-    self.newBook({
-        autor: '',
-        rate: '',
-        pages: '',
-        autorAtrr: ''
-    });        
+    self.shouldShowMessage = ko.observable();
+    self.editableBook = {
+        name: ko.observable('')
+    };
+         
 
     self.addBook = function () {
         self.books.push();
     }
   
     this.removeBook = function (book) {
-        return self.books.remove(book)
-        //self.books.valueHasMutated();
-        // self.books.removeAll()
+        self.books.remove(book);
+    }
+    var tempBook;
+    self.editBook = function (book) {
+        tempBook = book;
+        console.log(book)
+      //  self.editableBook(book);
+        self.editableBook.name(book.name)
+        self.isEditBook(true)
     }
 
-    self.editBook = function () {
-        console.log('brtsa');
-        self.isEditBook(true)
+    self.updateBook = function (book) {
+        console.log('book = ', self.editableBook.name())
+        tempBook.name = self.editableBook.name();
+        console.log(self.books());
     }
 }
 
 ko.applyBindings(new InitBooksData());
-*/
 
+
+
+
+
+
+/*
 var initialData = [{
     "name": "Living Room",
     "furnitures": [{
@@ -233,3 +242,4 @@ var HouseModel = function (rooms) {
 };
 
 ko.applyBindings(new HouseModel(initialData));
+*/
