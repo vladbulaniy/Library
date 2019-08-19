@@ -150,8 +150,8 @@ function InitBooksData(allBooks) {
     self.isEditBook = ko.observable(false);
     self.isAddingBook = ko.observable(false);
     self.shouldShowMessage = ko.observable();
-    self.editableBook = ko.observable('');
-    self.editableBook = {};
+    self.editableBook = ko.observable(new Book({}));
+    //self.editableBook = {};
 
     if (typeof allBooks !== 'undefined') {
         $.each(allBooks, function (i, el) {
@@ -195,9 +195,8 @@ function InitBooksData(allBooks) {
 
     self.editBook = function (book) {
         console.log(book)
-        self.editableBook = ko.mapping.fromJS(book);
-        self.editableBook.name(book.name());
-        console.log(self.editableBook.name());
+        self.editableBook(ko.mapping.fromJS(ko.mapping.toJS(book)));
+
         self.isEditBook(true);
     }
 
@@ -205,6 +204,10 @@ function InitBooksData(allBooks) {
         console.log('book = ', self.editableBook.name())
         tempBook.name(self.editableBook.name());
         self.isEditBook(false);
+    }
+
+    self.editAutor = function () {
+
     }
 }
 
