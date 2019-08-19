@@ -194,10 +194,12 @@ function InitBooksData(allBooks) {
     }
 
     self.editBook = function (book) {
-        console.log(book)
-        self.editableBook(ko.mapping.fromJS(ko.mapping.toJS(book)));
+        ko.cleanNode('yoir_selector')
+        //self.editableBook(ko.mapping.fromJS(ko.mapping.toJS(book)));
+        self.editableBook = book;
 
         self.isEditBook(true);
+        ko.applyBindings(self.editableBook, $('your_selector')[0])
     }
 
     self.updateBook = function (book) {
