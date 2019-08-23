@@ -145,17 +145,14 @@ var Book = function (book) {
 function InitBooksData(allBooks) {
     var self = this;
 
-    self.books = ko.observableArray([]);
-    // self.books(allBooks);
+    self.books = ko.observableArray([]);    
     self.isEditBook = ko.observable(false);
     self.isAddingBook = ko.observable(false);
     self.shouldShowMessage = ko.observable();
-    self.editableBook = ko.observable(new Book({}));
-    //self.editableBook = {};
+    self.editableBook = ko.observable(new Book({}));    
 
     if (typeof allBooks !== 'undefined') {
-        $.each(allBooks, function (i, el) {
-            //self.books.push(new Book(el));
+        $.each(allBooks, function (i, el) {            
             self.books.push(new Book({
                 id: el.id,
                 name: el.name,
@@ -169,46 +166,24 @@ function InitBooksData(allBooks) {
     }
 
 
-    self.addBook = function () {
-        //self.books.push();
+    self.addBook = function () {        
         self.isEditBook(true);
         self.isAddingBook(true);
     }
 
-    self.addNewBook = function () {
-        self.editableBook.date = '17.04.2019'
-        self.books.push(new Book({
-            name: self.editableBook.name,
-            date: self.editableBook.date,
-            autor: self.editableBook.autor,
-            rate: self.editableBook.rate,
-            pages: self.editableBook.pages,
-            autorAtrr: self.editableBook.pages
-        }));
-        console.log(self.books());
-        self.isAddingBook(false);
-    }
 
     this.removeBook = function (book) {
         self.books.remove(book);
     }
-    var tempBook = {};
-    self.editBook = function (book) {
-        tempBook = book;
-        ko.cleanNode('yoir_selector')
-        self.editableBook(ko.mapping.fromJS(ko.mapping.toJS(book)));
-       // self.editableBook = book;
 
-        self.isEditBook(true);
-        //ko.applyBindings(self.editableBook, $('your_selector')[0])
+    
+    self.editBook = function (book) {
+        tempBook = book;       
+        self.editableBook(ko.mapping.fromJS(ko.mapping.toJS(book)));
+        self.isEditBook(true);        
     }
 
-    self.updateBook = function (book) {
-        console.log(self.editableBook().name())
-        //tempBook.name(self.editableBook().name());
-        console.log('tempBook = ', tempBook)
-        tempBook = ko.mapping.fromJS(ko.mapping.toJS(self.editableBook()));
-        
+    self.updateBook = function (book) {        
         self.isEditBook(false);
     }
 
