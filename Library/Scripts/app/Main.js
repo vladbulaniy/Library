@@ -5,6 +5,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date(2011, 0, 1).toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -13,6 +15,8 @@ var allBooks = [
         name: "Heidi ",
         date: new Date('October 05, 1815').toLocaleDateString(),
         autor: "Johanna Spyri",
+        firstName: "Johanna",
+        lastName: "Spyri",
         rate: 2,
         pages: 789,
         autorAtrr: "Around 1875"
@@ -21,6 +25,8 @@ var allBooks = [
         name: "Meus Artigos",
         date: new Date('March 17, 1874').toLocaleDateString(),
         autor: "Jacob Burckhardt",
+        firstName: "Johanna",
+        lastName: "Spyri",
         rate: 18,
         pages: 550,
         autorAtrr: "Phaidon-Verlag"
@@ -29,6 +35,8 @@ var allBooks = [
         name: "The Sketch Book",
         date: new Date('May 08, 1805').toLocaleDateString(),
         autor: "Washington Irving",
+        firstName: "Johanna",
+        lastName: "Spyri",
         rate: 5,
         pages: 258,
         autorAtrr: "William Lyon Phelps (1865-1943)"
@@ -37,6 +45,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -45,6 +55,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -53,6 +65,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -61,6 +75,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -69,6 +85,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -77,6 +95,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -85,6 +105,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -93,6 +115,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -101,6 +125,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -109,6 +135,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -117,6 +145,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -125,6 +155,8 @@ var allBooks = [
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
         autor: "Friedrich Nietzsche",
+        firstName: "Friedrich",
+        lastName: "Nietzsche",
         rate: 5,
         pages: 150,
         autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
@@ -140,7 +172,16 @@ var Book = function (book) {
     self.rate = ko.observable(book.rate);
     self.pages = ko.observable(book.pages);
     self.autorAtrr = ko.observable(book.autorAtrr);
+    self.firstName = ko.observable(book.firstName);
+    self.lastName = ko.observable(book.lastName);
 };
+
+var Autor = function (autor) {
+    var self = this;
+    self.firstName = ko.observable(autor.firstName);
+    self.lastName = ko.observable(autor.lastName);
+    self.bookQuantity = ko.observable(autor.bookQuantity);
+}
 
 
 function InitBooksData(allBooks) {
@@ -152,6 +193,7 @@ function InitBooksData(allBooks) {
     self.isAddingBook = ko.observable(false);
     self.shouldShowMessage = ko.observable();
     self.editableBook = ko.observable(new Book({}));
+    self.editableAutor = ko.observable(new Autor({}));
     //self.editableBook = {};
 
     if (typeof allBooks !== 'undefined') {
@@ -164,7 +206,9 @@ function InitBooksData(allBooks) {
                 autor: el.autor,
                 rate: el.rate,
                 pages: el.pages,
-                autorAtrr: el.pages
+                autorAtrr: el.pages,
+                lastName: el.lastName,
+                firstName: el.firstName
             }));
         });
     }
@@ -217,8 +261,17 @@ function InitBooksData(allBooks) {
         self.isEditBook(false);
     }
 
-    self.editAutor = function () {
-
+    self.editAutor = function (book) {
+        console.log(book.lastName())
+        console.log(book.firstName())
+        var obj = new Autor({
+            lastName: book.lastName(),
+            firstName: book.firstName(),
+            bookQuantity: 256
+        });
+        console.log('obj = ', obj)
+        self.editableAutor = obj;
+        console.log(self.editableAutor)
     }
 }
 
