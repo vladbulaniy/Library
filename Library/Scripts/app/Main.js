@@ -133,6 +133,7 @@ var allBooks = [
 
 var Book = function (book) {
     var self = this;
+    self.id = ko.observable(book.id);
     self.name = ko.observable(book.name);
     self.date = ko.observable(book.date);
     self.autor = ko.observable(book.autor);
@@ -171,19 +172,26 @@ function InitBooksData(allBooks) {
         self.isAddingBook(true);
     }
 
+    self.addNewBook = function () {
+        self.books.push(self.editableBook())       
+        self.isAddingBook(false);
+        self.isEditBook(true);
+    }
 
     this.removeBook = function (book) {
         self.books.remove(book);
     }
-
     
     self.editBook = function (book) {
-        tempBook = book;       
-        self.editableBook(ko.mapping.fromJS(ko.mapping.toJS(book)));
-        self.isEditBook(true);        
+        self.editableBook(book)
+        self.isEditBook(true);
+        self.isAddingBook(false);
     }
 
-    self.updateBook = function (book) {        
+    self.updateBook = function () {
+        self.isEditBook(false);
+        var editabledBook = self.books().filter(b => b.id() == self.editableBook().id());       
+        editabledBook = book;  
         self.isEditBook(false);
     }
 
@@ -195,78 +203,3 @@ function InitBooksData(allBooks) {
 ko.applyBindings(new InitBooksData(allBooks));
 
 
-
-
-
-
-/*
-var initialData = [{
-    "name": "Living Room",
-    "furnitures": [{
-        "name": "Bookshelf",
-        "size": "Medium"
-    }]
-}, {
-    "name": "Bedroom",
-    "furnitures": [{
-        "name": "Bed",
-        "size": "Large"
-    }, {
-        "name": "Night Table",
-        "size": "Small"
-    }, {
-        "name": "Jacuzzi",
-        "size": "Large"
-    }]
-}];
-var Furniture = function (data) {
-    var self = this;
-    self.name = ko.observable('');
-    self.size = ko.observable('');
-    if (typeof data !== 'undefined') {
-        self.name(data.name);
-        self.size(data.size);
-    }
-}
-var Room = function (name, furnitures) {
-    var self = this;
-    self.name = ko.observable(name);
-    self.furnitures = ko.observableArray([]);
-    if (typeof furnitures !== 'undefined') {
-        $.each(furnitures, function (i, el) {
-            self.furnitures.push(new Furniture({ name: el.name, size: el.size }));
-        });
-    }
-    self.removeFurniture = function (furniture) {
-        self.furnitures.remove(furniture);
-    };
-    self.addFurniture = function () {
-        console.log("added");
-        self.furnitures.push(new Furniture({ name: '', size: '' }));
-    };
-};
-
-var HouseModel = function (rooms) {
-    var self = this;
-    self.save = function () {
-        console.log("do stuff");
-    };
-    self.lastSavedJson = ko.observable('');
-    self.rooms = ko.observableArray([]);
-    if (typeof rooms !== 'undefined') {
-        $.each(rooms, function (i, el) {
-            self.rooms.push(new Room(el.name, el.furnitures));
-        });
-    }
-
-    self.addRoom = function (name) {
-        self.rooms.push(new Room(name));
-    };
-
-    self.removeRoom = function (room) {
-        self.rooms.remove(room);
-    };
-};
-
-ko.applyBindings(new HouseModel(initialData));
-*/

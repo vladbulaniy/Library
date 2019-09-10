@@ -27,7 +27,7 @@
             <td><input type="text" data-bind="value: editableBook().pages" /></td>
             <td><input type="text" data-bind="value: editableBook().autorAtrr" /></td>
             <td>
-                <button class="btn btn-success" data-bind="click: $root.updateBook, visible:isEditBook">Save</button>
+                <button class="btn btn-success" data-bind="click: $root.updateBook, visible: !isAddingBook()">Save</button>
                 <button class="btn btn-success" data-bind="click: $root.addNewBook, visible: isAddingBook">Save</button>
             </td>
             <td></td>
@@ -35,7 +35,6 @@
 
     </thead>
     <tbody data-bind="foreach: books">
-
         <tr>
             <td>
                 <span data-bind="text: name"></span>
@@ -87,11 +86,13 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="">Save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="$root.editAutor">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
     </div>
 </div>
+
+
 
