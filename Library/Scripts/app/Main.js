@@ -170,22 +170,24 @@ function InitBooksData(allBooks) {
     }
 
 
-    self.addBook = function () {
-        //self.books.push();
+    self.addBook = function () {       
         self.isEditBook(true);
         self.isAddingBook(true);
     }
 
-    self.addNewBook = function () {
-        self.editableBook.date = '17.04.2019'
-        self.books.push(new Book({
-            name: self.editableBook.name,
-            date: self.editableBook.date,
-            autor: self.editableBook.autor,
-            rate: self.editableBook.rate,
-            pages: self.editableBook.pages,
-            autorAtrr: self.editableBook.pages
-        }));
+    self.addNewBook = function (book) {
+        console.log('added book', book)
+        //self.editableBook.date = '17.04.2019'
+        //self.books.push(new Book({            
+        //    name: self.editableBook.name,
+        //    date: self.editableBook.date,
+        //    autor: self.editableBook.autor,
+        //    rate: self.editableBook.rate,
+        //    pages: self.editableBook.pages,
+        //    autorAtrr: self.editableBook.pages
+        //}));
+        console.log(self.editableBook());
+        self.books.push(self.editableBook())
         console.log(self.books());
         self.isAddingBook(false);
     }
@@ -193,7 +195,7 @@ function InitBooksData(allBooks) {
     this.removeBook = function (book) {
         self.books.remove(book);
     }
-    var tempBook = {};
+    
     self.editBook = function (book) {
         tempBook = book;
         ko.cleanNode('yoir_selector')
@@ -211,9 +213,7 @@ function InitBooksData(allBooks) {
        
         editabledBook = book;
         
-       // tempBook = ko.mapping.fromJS(ko.mapping.toJS(self.editableBook()));
-       // tempBook = book;
-        console.log('tempBook name = ', tempBook.name())
+       // tempBook = ko.mapping.fromJS(ko.mapping.toJS(self.editableBook()));       
         self.isEditBook(false);
     }
 
