@@ -220,9 +220,7 @@ function InitBooksData(allBooks) {
     }
 
     self.updateBook = function () {
-        self.isEditBook(false);
-        var editabledBook = self.books().filter(b => b.id() == self.editableBook().id());       
-        editabledBook = book;  
+        self.isEditBook(false);       
         self.isEditBook(false);
     }
 
