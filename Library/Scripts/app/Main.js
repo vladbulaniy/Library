@@ -3,8 +3,7 @@ var allBooks = [
     {
         id: 0,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
-        date: new Date(2011, 0, 1).toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
+        date: new Date(2011, 0, 1).toLocaleDateString(),       
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -13,8 +12,7 @@ var allBooks = [
     }, {
         id: 1,
         name: "Heidi ",
-        date: new Date('October 05, 1815').toLocaleDateString(),
-        autor: "Johanna Spyri",
+        date: new Date('October 05, 1815').toLocaleDateString(),        
         firstName: "Johanna",
         lastName: "Spyri",
         rate: 2,
@@ -24,9 +22,8 @@ var allBooks = [
         id: 2,
         name: "Meus Artigos",
         date: new Date('March 17, 1874').toLocaleDateString(),
-        autor: "Jacob Burckhardt",
-        firstName: "Johanna",
-        lastName: "Spyri",
+        firstName: "Jacob",
+        lastName: "Burckhardt",
         rate: 18,
         pages: 550,
         autorAtrr: "Phaidon-Verlag"
@@ -34,7 +31,6 @@ var allBooks = [
         id: 3,
         name: "The Sketch Book",
         date: new Date('May 08, 1805').toLocaleDateString(),
-        autor: "Washington Irving",
         firstName: "Johanna",
         lastName: "Spyri",
         rate: 5,
@@ -44,7 +40,6 @@ var allBooks = [
         id: 4,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -54,7 +49,6 @@ var allBooks = [
         id: 5,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -64,7 +58,6 @@ var allBooks = [
         id: 6,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -74,7 +67,6 @@ var allBooks = [
         id: 7,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -84,7 +76,6 @@ var allBooks = [
         id: 8,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -94,7 +85,6 @@ var allBooks = [
         id: 9,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -104,7 +94,6 @@ var allBooks = [
         id: 10,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -114,7 +103,6 @@ var allBooks = [
         id: 11,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -124,7 +112,6 @@ var allBooks = [
         id: 12,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -134,7 +121,6 @@ var allBooks = [
         id: 13,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -144,7 +130,6 @@ var allBooks = [
         id: 14,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -154,7 +139,6 @@ var allBooks = [
         id: 15,
         name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date('December 17, 1905').toLocaleDateString(),
-        autor: "Friedrich Nietzsche",
         firstName: "Friedrich",
         lastName: "Nietzsche",
         rate: 5,
@@ -168,12 +152,15 @@ var Book = function (book) {
     self.id = ko.observable(book.id);
     self.name = ko.observable(book.name);
     self.date = ko.observable(book.date);
-    self.autor = ko.observable(book.autor);
+    self.autor = ko.pureComputed(function () {
+        return self.firstName() + " " + self.lastName();
+    }, self);
     self.rate = ko.observable(book.rate);
     self.pages = ko.observable(book.pages);
     self.autorAtrr = ko.observable(book.autorAtrr);
     self.firstName = ko.observable(book.firstName);
     self.lastName = ko.observable(book.lastName);
+    self.bookQuantity = ko.observable(book.bookQuantity || 520);
 };
 
 var Autor = function (autor) {
@@ -194,6 +181,7 @@ function InitBooksData(allBooks) {
     self.shouldShowMessage = ko.observable();
     self.editableBook = ko.observable(new Book({}));
     self.editableAutor = ko.observable(new Autor({}));
+    self.currentAutor = ko.observable(null);
     //self.editableBook = {};
 
     if (typeof allBooks !== 'undefined') {
@@ -208,7 +196,8 @@ function InitBooksData(allBooks) {
                 pages: el.pages,
                 autorAtrr: el.pages,
                 lastName: el.lastName,
-                firstName: el.firstName
+                firstName: el.firstName,
+                bookQuantity: el.bookQuantity
             }));
         });
     }
@@ -220,19 +209,7 @@ function InitBooksData(allBooks) {
     }
 
     self.addNewBook = function (book) {
-        console.log('added book', book)
-        //self.editableBook.date = '17.04.2019'
-        //self.books.push(new Book({            
-        //    name: self.editableBook.name,
-        //    date: self.editableBook.date,
-        //    autor: self.editableBook.autor,
-        //    rate: self.editableBook.rate,
-        //    pages: self.editableBook.pages,
-        //    autorAtrr: self.editableBook.pages
-        //}));
-        console.log(self.editableBook());
-        self.books.push(self.editableBook())
-        console.log(self.books());
+        self.books.push(self.editableBook())        
         self.isAddingBook(false);
     }
 
@@ -241,37 +218,22 @@ function InitBooksData(allBooks) {
     }
     
     self.editBook = function (book) {
-        tempBook = book;
-        ko.cleanNode('yoir_selector')
-        //self.editableBook(ko.mapping.fromJS(ko.mapping.toJS(book)));
-        
-        self.editableBook(book)
-       // self.editableBook = book;
-
-        self.isEditBook(true);
-        //ko.applyBindings(self.editableBook, $('your_selector')[0])
+        self.editableBook(book);
+        self.isEditBook(true);        
     }
 
     self.updateBook = function () {
-        var editabledBook = self.books().filter(b => b.id() == self.editableBook().id());
-       
-        editabledBook = book;
-        
-       // tempBook = ko.mapping.fromJS(ko.mapping.toJS(self.editableBook()));       
+        //var editabledBook = self.books().filter(b => b.id() == self.editableBook().id());      
         self.isEditBook(false);
     }
 
-    self.editAutor = function (book) {
-        console.log(book.lastName())
-        console.log(book.firstName())
-        var obj = new Autor({
-            lastName: book.lastName(),
-            firstName: book.firstName(),
-            bookQuantity: 256
-        });
-        console.log('obj = ', obj)
-        self.editableAutor = obj;
-        console.log(self.editableAutor)
+    self.editAutor = function (autor) {        
+        self.currentAutor(autor);
+        $("#edit-autor-modal").modal('show');
+    }
+
+    self.saveAutor = function (autor) {        
+        $("#edit-autor-modal").modal('hide');
     }
 }
 
