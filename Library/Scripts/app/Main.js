@@ -153,7 +153,11 @@ var Book = function (book) {
     self.name = ko.observable(book.name);
     self.date = ko.observable(book.date);
     self.autor = ko.pureComputed(function () {
-        return self.firstName() + " " + self.lastName();
+        var result = '';
+        if (self.firstName() && self.lastName()) {
+            result = self.firstName() + ' ' + self.lastName();
+        };
+        return result
     }, self);
     self.rate = ko.observable(book.rate);
     self.pages = ko.observable(book.pages);
