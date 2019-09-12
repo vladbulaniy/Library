@@ -183,7 +183,7 @@ function InitBooksData(allBooks) {
     self.isAddingBook = ko.observable(false);
     self.shouldShowMessage = ko.observable();
     self.editableBook = ko.observable(new Book({}));    
-
+    self.currentAutor = ko.observable();
     if (typeof allBooks !== 'undefined') {
         $.each(allBooks, function (i, el) {            
             self.books.push(new Book({
