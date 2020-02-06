@@ -41,10 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Interfaces\Business\BusinessContextBase.cs" />
+    <Compile Include="Interfaces\Business\IAuthorDM.cs" />
+    <Compile Include="Interfaces\Business\IBookDM.cs" />
+    <Compile Include="Interfaces\Business\IBusinessContext.cs" />
     <Compile Include="Interfaces\Data\IDataContext.cs" />
     <Compile Include="Interfaces\Data\IRepository.cs" />
+    <Compile Include="Interfaces\IRequestContext.cs" />
+    <Compile Include="Interfaces\IServiceProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{BEEA5363-2618-4E53-889F-6E69AF774A09}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
