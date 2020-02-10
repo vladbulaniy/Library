@@ -1,11 +1,11 @@
 ﻿using System;
-using Unity;
+using Microsoft.Practices.Unity;
 using Infrastructure.Interfaces;
 using Infrastructure.Interfaces.Business;
 
 namespace Bootstrap
 {
-    public class ServiceProviderFactory : IDisposable
+    public class ServiceProviderFactory : IServiceProviderFactory, IDisposable
     {
         private readonly IUnityContainer container = new UnityContainer();
         private readonly IRequestContext requestContext = default(IRequestContext);

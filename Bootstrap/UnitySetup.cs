@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Interfaces;
 using System;
-using Unity;
+using Microsoft.Practices.Unity;
 
 namespace Bootstrap
 {
@@ -25,7 +25,7 @@ namespace Bootstrap
 
         public static IServiceProviderFactory CreateFactory(IRequestContext context)
         {
-            return new ServiceProviderFactory(container.Value, context);
+            return new ServiceProviderFactory(container.Value, context);             
         }
     }
 }

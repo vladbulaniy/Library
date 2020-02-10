@@ -236,6 +236,13 @@ function InitBooksData(allBooks) {
     self.saveAutor = function (autor) {        
         $("#edit-autor-modal").modal('hide');
     }
+
+    self.getBooks = function () {
+        $.get("books/getBooks")
+            .done(function (data) {
+                console.log('data  = ', data);
+            });
+    }
 }
 
 ko.applyBindings(new InitBooksData(allBooks));

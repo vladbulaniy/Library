@@ -45,13 +45,20 @@
     <Compile Include="Interfaces\Business\IAuthorDM.cs" />
     <Compile Include="Interfaces\Business\IBookDM.cs" />
     <Compile Include="Interfaces\Business\IBusinessContext.cs" />
+    <Compile Include="Interfaces\Data\IAuthorRepository.cs" />
+    <Compile Include="Interfaces\Data\IBookRepository.cs" />
     <Compile Include="Interfaces\Data\IDataContext.cs" />
     <Compile Include="Interfaces\Data\IRepository.cs" />
+    <Compile Include="Interfaces\IEntityService.cs" />
     <Compile Include="Interfaces\IRequestContext.cs" />
     <Compile Include="Interfaces\IServiceProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.Entity\Data.Entity.csproj">
+      <Project>{B5BAC7F9-C887-4272-85AE-99015CA7BC52}</Project>
+      <Name>Data.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{BEEA5363-2618-4E53-889F-6E69AF774A09}</Project>
       <Name>ViewModel</Name>

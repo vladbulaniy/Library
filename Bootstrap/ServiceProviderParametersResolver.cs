@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Resolution;
+using Infrastructure.Interfaces;
+using Microsoft.Practices.ObjectBuilder2;
+using Microsoft.Practices.Unity;
 
 namespace Bootstrap
 {
@@ -35,5 +34,7 @@ namespace Bootstrap
             var value = parameterValues.Dequeue();
             return value.GetResolverPolicy(dependencyType);
         }
+
+    
     }
 }

@@ -16,6 +16,11 @@ namespace Data.Repositories
             private set;
         }
 
+        protected RepositoryBase(IDataContext context)
+        {
+            this.CurrentContext = context;
+        }
+
         public long Create(T entity)
         {
             throw new NotImplementedException();

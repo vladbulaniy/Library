@@ -2,8 +2,8 @@
 
 namespace Infrastructure.Interfaces
 {
-    public interface IServiceProviderFactory: IDisposable
+    public interface IServiceProviderFactory: IServiceProvider
     {
-        T GetService<T>(params object[] constructParams);
+        TService GetService<TService>(params object[] constructParams);
     }
 }
