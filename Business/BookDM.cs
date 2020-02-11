@@ -1,10 +1,13 @@
-﻿using Infrastructure.Interfaces;
+﻿using Data.Entity;
+using Infrastructure.Interfaces;
 using Infrastructure.Interfaces.Business;
+using Infrastructure.Interfaces.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModel;
 
 namespace Business
 {
@@ -32,7 +35,12 @@ namespace Business
 
         public IEnumerable<global::ViewModel.BookVM> GetBooks()
         {
-            throw new NotImplementedException();
+            using (var repo = Factory.GetService<IBookRepository>(DataContext))
+            {
+                var booksEM = repo.GetBooks();
+                var booksVM = entService.ConvertTo<IEnumerable<BookEM>, IEnumerable<BookVM>>(booksEM);
+                return booksVM;
+            }
         }
 
         public void UpdateBook(global::ViewModel.BookVM model)

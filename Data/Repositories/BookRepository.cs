@@ -32,25 +32,15 @@ namespace Data.Repositories
 
         public IEnumerable<BookEM> GetBooks()
         {
-            string spName = "USPGetBooks";
+            string sqlQuery = @"SELECT * FROM Book";
+
+            var sqlParams = new DynamicParameters();
 
             using (IDbConnection db = new SqlConnection(base.CurrentContext.DbConnection))
             {
-                var books = db.Query<BookEM, AuthorEM, BookEM>(spName, (book, author) =>
-                {
-                    if (author != null) book.Authors.Add(author);
-                    else book.Authors = new List<AuthorEM>();
-                    return book;
-                }, null, null, true, splitOn: "AuthorId", null, CommandType.StoredProcedure);
+                var bookEM = db.Query<BookEM>(sqlQuery, sqlParams).ToList();
 
-                var result = books.GroupBy(b => b.BookId).Select(g =>
-                {
-                    var groupedPost = g.First();
-                    if (groupedPost.Authors.Any()) groupedPost.Authors = g.Select(a => a.Authors.Single()).ToList();
-                    return groupedPost;
-                }).ToList();
-
-                return result;
+                return bookEM;
             }
         }
 
