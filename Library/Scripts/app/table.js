@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-   // $('#table_id').DataTable();
+    $('#bookTable').DataTable();
 
 
 })
