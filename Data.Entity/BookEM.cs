@@ -6,10 +6,10 @@ namespace Data.Entity
     public class BookEM
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime PublicationDate { get; set; }
-        public int Rating { get; set; }
-        public int PagesCount { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
+        public int Rate { get; set; }
+        public int Pages { get; set; }
 
         public List<AuthorEM> Authors { get; set; } = new List<AuthorEM>();
     }

@@ -175,7 +175,7 @@ var Autor = function (autor) {
 }
 
 
-function InitBooksData(allBooks) {
+function InitBooksData() {
     var self = this;
 
     self.books = ko.observableArray([]);    
@@ -184,6 +184,8 @@ function InitBooksData(allBooks) {
     self.shouldShowMessage = ko.observable();
     self.editableBook = ko.observable(new Book({}));    
     self.currentAutor = ko.observable();
+    initBookTable();
+    /*
     if (typeof allBooks !== 'undefined') {
         $.each(allBooks, function (i, el) {            
             self.books.push(new Book({
@@ -200,7 +202,7 @@ function InitBooksData(allBooks) {
             }));
         });
     }
-
+    */
 
     self.addBook = function () {        
         self.isEditBook(true);
@@ -245,6 +247,6 @@ function InitBooksData(allBooks) {
     }
 }
 
-ko.applyBindings(new InitBooksData(allBooks));
+ko.applyBindings(new InitBooksData());
 
 
