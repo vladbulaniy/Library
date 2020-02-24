@@ -15,7 +15,7 @@ namespace Business
     {
         public BookDM(IRequestContext requestContext) : base(requestContext)
         {
-
+            
         }
 
         public void CreateBook(global::ViewModel.BookVM model)
@@ -38,11 +38,11 @@ namespace Business
             using (var repo = Factory.GetService<IBookRepository>(DataContext))
             {
                 var booksEM = repo.GetBooks();
-                var booksVM = entService.ConvertTo<IEnumerable<BookEM>, IEnumerable<BookVM>>(booksEM);
+                var booksVM = Factory.GetService<IEntityService>().ConvertTo<IEnumerable<BookEM>, IEnumerable<BookVM>>(booksEM);                
                 return booksVM;
             }
         }
-
+        
         public void UpdateBook(global::ViewModel.BookVM model)
         {
             throw new NotImplementedException();
