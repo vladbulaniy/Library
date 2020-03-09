@@ -43,6 +43,11 @@
   <ItemGroup>
     <Compile Include="AuthorVM.cs" />
     <Compile Include="BookVM.cs" />
+    <Compile Include="DataGridParameters\Columns.cs" />
+    <Compile Include="DataGridParameters\DataGridInputParamsVM.cs" />
+    <Compile Include="DataGridParameters\DataGridOutputParamsVM.cs" />
+    <Compile Include="DataGridParameters\Order.cs" />
+    <Compile Include="DataGridParameters\Search.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

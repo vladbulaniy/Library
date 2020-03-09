@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Data.Entity;
+using System;
 using ViewModel;
 
 namespace Bootstrap
@@ -10,6 +11,9 @@ namespace Bootstrap
         {
             Mapper.Initialize((mapper) =>
             {
+                mapper.CreateMap<DateTime, string>()
+                    .ConvertUsing(s => s.ToString("dd.mm.yyyy"));
+
                 mapper.CreateMap<BookVM, BookEM>().ReverseMap();
                 //mapper.CreateMap<CreateBookVM, CreateBookEM>().ReverseMap();
 

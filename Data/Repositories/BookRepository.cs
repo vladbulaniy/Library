@@ -30,17 +30,24 @@ namespace Data.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<BookEM> GetBooks()
+        public IEnumerable<BookEM> GetBooks(string searchExpression, int start, int length, out int totalRow)
         {
-            string sqlQuery = @"SELECT * FROM Book";
-
-            var sqlParams = new DynamicParameters();
-
-            using (IDbConnection db = new SqlConnection(base.CurrentContext.DbConnection))
+            var spName = "USPGetBooks";
+            using (SqlConnection connection = new SqlConnection(CurrentContext.DbConnection))
             {
-                var bookEM = db.Query<BookEM>(sqlQuery, sqlParams).ToList();
+                totalRow = 0;
+                DynamicParameters parameter = new DynamicParameters();
 
-                return bookEM;
+                parameter.Add("@SearchExpression", searchExpression, DbType.String, ParameterDirection.Input);
+                parameter.Add("@Start", start, DbType.String, ParameterDirection.Input);
+                parameter.Add("@Length", length, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                parameter.Add("@TotalFilter", totalRow, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                var result = connection.Query<BookEM>(spName, parameter, commandType: CommandType.StoredProcedure);
+                totalRow = parameter.Get<int>("TotalFilter");
+
+
+                return result;
             }
         }
 

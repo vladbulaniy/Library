@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ViewModel;
+using ViewModel.DataGridParameters;
 
 namespace Infrastructure.Interfaces.Business
 {
     public interface IBookDM: IDisposable
     {
-        IEnumerable<BookVM> GetBooks();
+        DataGridOutputParamsVM GetBooks(DataGridInputParamsVM options);
         BookVM GetBook(int id);
         void CreateBook(BookVM model);
         void UpdateBook(BookVM model);

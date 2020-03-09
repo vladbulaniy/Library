@@ -9,8 +9,7 @@
             <th>Autor</th>
             <th>Rate</th>
             <th>Pages</th>
-           @* <th>Autor Atrr</th>*@
-            <th></th>
+            <th>Autor Atrr</th>
             <th></th>
         </tr>
         <tr data-bind="visible: isEditBook">
@@ -28,10 +27,12 @@
             <td><input type="text" data-bind="value: editableBook().pages" /></td>
             <td><input type="text" data-bind="value: editableBook().autorAtrr" /></td>
             <td>
-                <button class="btn btn-success" data-bind="click: $root.updateBook, visible: !isAddingBook()">Save</button>
-                <button class="btn btn-success" data-bind="click: $root.addNewBook, visible: isAddingBook">Save</button>
+                <div style="width:150px">
+                    <button class="btn btn-success" data-bind="click: $root.updateBook, visible: !isAddingBook()">Save</button>
+                    <button class="btn btn-success" data-bind="click: $root.addNewBook, visible: isAddingBook">Save</button>
+                </div>
+                
             </td>
-            <td></td>
         </tr>
     </thead>
     @*<tbody data-bind="foreach: books">
@@ -97,7 +98,7 @@
 
 
     <script>
-
+        /*
         $(document).ready(function () {
             $('#bookTable').DataTable({
                 "ajax": {
@@ -116,6 +117,11 @@
                     }
                 ]
             });
-        });
+        });*/
+
+        $(document).ready(function () {
+            Library.Init('bookTable');
+        })
+        
     </script>
 

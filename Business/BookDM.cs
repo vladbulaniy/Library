@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel;
+using ViewModel.DataGridParameters;
 
 namespace Business
 {
@@ -33,13 +34,22 @@ namespace Business
             throw new NotImplementedException();
         }
 
-        public IEnumerable<global::ViewModel.BookVM> GetBooks()
+        public DataGridOutputParamsVM GetBooks(DataGridInputParamsVM options)
         {
             using (var repo = Factory.GetService<IBookRepository>(DataContext))
-            {
-                var booksEM = repo.GetBooks();
-                var booksVM = Factory.GetService<IEntityService>().ConvertTo<IEnumerable<BookEM>, IEnumerable<BookVM>>(booksEM);                
-                return booksVM;
+            {                
+                int totalRows;
+
+                var books = repo.GetBooks(options.Search.Value, options.Start, options.Length, out totalRows);
+
+                var result = new DataGridOutputParamsVM()
+                {
+                    data = Factory.GetService<IEntityService>().ConvertTo<IEnumerable<BookEM>, IEnumerable<BookVM>>(books),
+                    draw = options.Draw,
+                    recordsTotal = totalRows,
+                    recordsFiltered = totalRows
+                };
+                return result;
             }
         }
         

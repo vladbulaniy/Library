@@ -10,7 +10,8 @@ namespace Data.Entity
         public DateTime Date { get; set; }
         public int Rate { get; set; }
         public int Pages { get; set; }
-
-        public List<AuthorEM> Authors { get; set; } = new List<AuthorEM>();
+        public int MyProperty { get; set; }
+        public string Author { get; set; }
+        //public List<AuthorEM> Authors { get; set; } = new List<AuthorEM>();
     }
 }
