@@ -1,6 +1,6 @@
 ﻿<h2>Library</h2>
-<button class="btn btn-primary" data-bind="click: $root.addBook">Add</button>
-<button class="btn btn-primary" data-bind="click: $root.getBooks">Get Books</button>
+<button class="btn btn-primary" data-bind="click: addBook">Add</button>
+<button class="btn btn-primary" data-bind="click: getBooks">Get Books</button>
 <table id="bookTable">
     <thead>
         <tr>
@@ -28,27 +28,13 @@
             <td><input type="text" data-bind="value: editableBook().autorAtrr" /></td>
             <td>
                 <div style="width:150px">
-                    <button class="btn btn-success" data-bind="click: $root.updateBook, visible: !isAddingBook()">Save</button>
-                    <button class="btn btn-success" data-bind="click: $root.addNewBook, visible: isAddingBook">Save</button>
+                    <button class="btn btn-success" data-bind="click: updateBook, visible: !isAddingBook">Save</button>
+                    <button class="btn btn-success" data-bind="click: addNewBook, visible: isAddingBook">Save</button>
                 </div>
                 
             </td>
         </tr>
     </thead>
-    @*<tbody data-bind="foreach: books">
-            <tr>
-                <td>
-                    <span data-bind="text: name"></span>
-                </td>
-                <td data-bind="text: date"></td>
-                <td><a href="#" data-bind="click: $root.editAutor, text: autor" data-toggle="modal"></a></td>
-                <td data-bind="text: rate"></td>
-                <td data-bind="text: pages"></td>
-                <td data-bind="text: autorAtrr"></td>
-                <td><a href="#" data-bind="click: $root.editBook">Edit</a></td>
-                <td><a href="#" data-bind="click: $root.removeBook">Remove</a></td>
-            </tr>
-        </tbody>*@
 </table>
 
 
@@ -87,7 +73,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bind="click: $root.saveAutor">Save</button>
+                <button type="button" class="btn btn-primary" data-bind="click: saveAutor">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -95,33 +81,9 @@
     </div>
 </div>
 
-
-
-    <script>
-        /*
-        $(document).ready(function () {
-            $('#bookTable').DataTable({
-                "ajax": {
-                    "url": "/Books/GetBooks",
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "columns": [
-                    {
-                        "data": "Name",
-                        "data": "Date",
-                        "data": "Autor",
-                        "data": "Rate",
-                        "data": "Pages",
-                        //"data": "Autor Atrr"
-                    }
-                ]
-            });
-        });*/
-
+    <script>        
         $(document).ready(function () {
             Library.Init('bookTable');
-        })
-        
+        })        
     </script>
 

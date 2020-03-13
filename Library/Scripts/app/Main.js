@@ -115,44 +115,9 @@
                     }
                 }
             ]
-
-
-
-            //$(tableId).DataTable({
-            //    paging: true,
-            //    serverSide: true,
-            //    ordering: false,
-            //    'ajax': {
-            //        'url': '/Books/GetBooks',
-            //        'type': 'GET'
-            //    },
-            //    columns: [
-            //        /*{ "data": "Id", "title": " ", "searchable": "false" },*/
-            //        { "data": "Name" },
-            //        { "data": "Date", "searchable": "false" },
-            //        { "data": "Rate", "searchable": "false" },
-            //        { "data": "Pages", "searchable": "false" },
-            //        { "data": "Author", "searchable": "false" }
-            //    ]
-
-            /*,
-            columnDefs: [
-                {
-                    targets: 0,
-                    data: "Id",
-                    render: function (data, type, row, meta) {
-                        return RenderButtonsRow(data);
-                    }
-                },
-                {
-                    targets: 5,
-                    data: "Author",
-                    render: function (data, type, row, meta) {
-                        return RenderAuthorRow(data);
-                    }
-                }
-            ]*/
         });
+
+        ko.applyBindings(self)
     };
 }).apply(Library);
 
