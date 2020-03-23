@@ -26,6 +26,15 @@ namespace Library
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            
+            bundles.Add(new ScriptBundle("~/global/js")
+                .Include("~/Scripts/moment.js")
+                .Include("~/Scripts/knockout-mapping.js")
+                .Include("~/Scripts/knockout.validation.min.js")
+                .Include("~/Scripts/DataTables/datatables.min.js")
+                .Include("~/Scripts/bootstrap-select.js")
+                .Include("~/Scripts/bootstrap-datepicker.min.js")
+                .Include("~/Scripts/toastr.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/app/Main.js"));

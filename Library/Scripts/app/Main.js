@@ -9,8 +9,9 @@
         AuthorsIds: ko.observableArray([]).extend({ required: true }),
         Rate: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         Rating: ko.observable().extend({ required: true }),
-        PageCount: ko.observable().extend({ number: true, required: true })
+        Pages: ko.observable().extend({ number: true, required: true })
     });
+    /*
     name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
         date: new Date(2011, 0, 1).toLocaleDateString(),
             firstName: "Friedrich",
@@ -18,7 +19,7 @@
                     rate: 5,
                         pages: 150,
                             autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
-
+                            */
     self.books = ko.observableArray([]);
     self.isEditBook = ko.observable(false);
     self.isAddingBook = ko.observable(false);
