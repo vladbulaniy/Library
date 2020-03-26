@@ -1,89 +1,93 @@
-﻿<h2>Library</h2>
-<button class="btn btn-primary" data-bind="click: addBook">Add</button>
-<button class="btn btn-primary" data-bind="click: getBooks">Get Books</button>
-<table id="bookTable">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Autor</th>
-            <th>Rate</th>
-            <th>Pages</th>
-            <th>Autor Atrr</th>
-            <th></th>
-        </tr>
-        <tr data-bind="visible: isEditBook">
-            <td><input type="text" data-bind="value: editableBook().name" />
-            <td>
-                <div class="input-group date" id="datetimepicker" style="width:150px">
-                    <input type="text" class="form-control" data-bind="value: editableBook().date" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+﻿<div id="container">
+
+
+    <h2>Library</h2>
+    <button class="btn btn-primary" data-bind="click: addBook">Add</button>
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Autor</th>
+                <th>Rate</th>
+                <th>Pages</th>
+                <th>Autor Atrr</th>
+                <th></th>
+            </tr>
+            <tr data-bind="visible: isEditBook">
+                <td><input type="text" data-bind="value: editableBook().Name" />
+                <td>
+                    <div class="input-group date" id="datetimepicker" style="width:150px">
+                        <input type="text" class="form-control" data-bind="value: editableBook().Date" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </td>
+                <td><input type="text" id="author" data-bind="value: editableBook().Autor" /></td>
+                <td><input type="text" data-bind="value: editableBook().Rate" /></td>
+                <td><input type="text" data-bind="value: editableBook().Pages" /></td>
+                <td><input type="text" data-bind="value: editableBook().AutorAtrr" /></td>
+                <td>
+                    <div style="width:150px">
+                        <button class="btn btn-success" data-bind="click: updateBook, visible: !isAddingBook">Save</button>
+                        <button class="btn btn-success" data-bind="click: saveBook, visible: isAddingBook">Save</button>
+                    </div>
+
+                </td>
+            </tr>
+        </thead>
+    </table>
+
+
+
+
+
+
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="edit-autor-modal" role="dialog" data-bind="with: currentAutor">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Autor attributes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="firstName" class="control-label col-sm-3">First name</label>
+                                <input type="text" name="firstName" class="col-sm-6" data-bind="value:firstName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="control-label  col-sm-3">Last name</label>
+                                <input type="text" name="lastName" class="col-sm-6" data-bind="value: lastName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="bookQuantity" class="control-label col-sm-3">Book quantity</label>
+                                <input type="text" name="bookQuantity" class="col-sm-6" data-bind="value: bookQuantity" />
+                            </div>
+                        </form>
+                    </div>
+
+
                 </div>
-            </td>
-            <td><input type="text" data-bind="value: editableBook().autor" /></td>
-            <td><input type="text" data-bind="value: editableBook().rate" /></td>
-            <td><input type="text" data-bind="value: editableBook().pages" /></td>
-            <td><input type="text" data-bind="value: editableBook().autorAtrr" /></td>
-            <td>
-                <div style="width:150px">
-                    <button class="btn btn-success" data-bind="click: updateBook, visible: !isAddingBook">Save</button>
-                    <button class="btn btn-success" data-bind="click: addNewBook, visible: isAddingBook">Save</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bind="click: saveAutor">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-                
-            </td>
-        </tr>
-    </thead>
-</table>
-
-
-
-
-
-
-<div class="container">
-    <!-- Modal -->
-    <div class="modal fade" id="edit-autor-modal" role="dialog" data-bind="with: currentAutor">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Autor attributes</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="firstName" class="control-label col-sm-3">First name</label>
-                            <input type="text" name="firstName" class="col-sm-6" data-bind="value:firstName" />
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName" class="control-label  col-sm-3">Last name</label>
-                            <input type="text" name="lastName" class="col-sm-6" data-bind="value: lastName" />
-                        </div>
-                        <div class="form-group">
-                            <label for="bookQuantity" class="control-label col-sm-3">Book quantity</label>
-                            <input type="text" name="bookQuantity" class="col-sm-6" data-bind="value: bookQuantity" />
-                        </div>
-                    </form>
-                </div>
-
-
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bind="click: saveAutor">Save</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+
         </div>
-
     </div>
 </div>
-
     <script>        
         $(document).ready(function () {
+            Library.saveBookUrl = '@Url.Action("CreateBook", "Book")';
             Library.Init('bookTable');
+            Book.Init("#datetimepicker", "#author", '#container');
         })        
     </script>
 

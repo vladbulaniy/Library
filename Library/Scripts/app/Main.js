@@ -2,30 +2,31 @@
 
 (function () {
     var self = this;
-
+    /*
     var BookModel = ko.validatedObservable({
         Name: ko.observable().extend({ required: true }),
         Date: ko.observable().extend({ required: true }),
         AuthorsIds: ko.observableArray([]).extend({ required: true }),
         Rate: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        Rating: ko.observable().extend({ required: true }),
+       // Rating: ko.observable().extend({ required: true }),
         Pages: ko.observable().extend({ number: true, required: true })
     });
-    /*
-    name: "Jenseits von Gut und Böse: prelude to a philosophy of the future",
-        date: new Date(2011, 0, 1).toLocaleDateString(),
-            firstName: "Friedrich",
-                lastName: "Nietzsche",
-                    rate: 5,
-                        pages: 150,
-                            autorAtrr: "Friedrich Wilhelm Nietzsche (1844-1900)"
-                            */
+    */
+    var BookModel = ko.observable({
+        Name: ko.observable(),
+        Date: ko.observable(),
+        AuthorsIds: ko.observableArray([]),
+        Rate: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        // Rating: ko.observable().extend({ required: true }),
+        Pages: ko.observable()
+    });
+
     self.books = ko.observableArray([]);
     self.isEditBook = ko.observable(false);
     self.isAddingBook = ko.observable(false);
     self.shouldShowMessage = ko.observable();
-    //self.editableBook = ko.observable(new Book({}));
-    self.editableBook = ko.observable();
+    self.editableBook = ko.observable(BookModel);
+    //self.editableBook = ko.observable();
     self.currentAutor = ko.observable();
     //initBookTable();
 
@@ -35,10 +36,34 @@
         self.isAddingBook(true);
     };
 
-    self.addNewBook = function () {
-        self.books.push(self.editableBook());
-        self.isAddingBook(false);
-        self.isEditBook(true);
+    self.saveBook = function () {
+       // self.books.push(self.editableBook());
+        /*
+        if (BookModel.isValid()) {
+            $.post(self.saveBookUrl, ko.mapping.toJS(self.editableBook()))
+                .done(function () {
+                    toastr.success('Book successfully added');                   
+                    self.isAddingBook(false);
+                    self.isEditBook(false);
+                })
+                .fail(function (e) {
+                    toastr.success('Book successfully created');
+                });
+        } else {
+            BookModel.errors.showAllMessages();
+        }
+        */
+        console.log(self.editableBook());
+        $.post(self.saveBookUrl, ko.mapping.toJS(self.editableBook()))
+            .done(function () {
+                //toastr.success('Book successfully added');
+                self.isAddingBook(false);
+                self.isEditBook(false);
+            })
+            .fail(function (e) {
+
+                toastr.success('Book successfully created');
+            });
     };
 
     this.removeBook = function (book) {
@@ -134,7 +159,7 @@
             ]
         });
 
-        ko.applyBindings(self)
+        ko.applyBindings(self, $('#container')[0]);
     };
 }).apply(Library);
 
